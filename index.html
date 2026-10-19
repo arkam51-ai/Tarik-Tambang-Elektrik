@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Inovasi Guru · Tarik Tambang">
+<title>Salinan – Adu Cepat Gerak Lurus: Duel GLB vs GLBB!</title>
+<style>
+:root { --bg:#f5f7f5; --card:#fff; --ink:#15201c; --muted:#5a6662; --line:#dfe6e2; --brand:#0f5c4d; --brand-2:#138a72;
+  --ok:#1d6b3a; --ok-bg:#e3f3e7; --err:#a12a2a; --err-bg:#fbe9e9; --focus:#c8702a; --pilih:#fff4dc; --pilih-garis:#c8702a; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0e1513; --card:#17211e; --ink:#e6efec; --muted:#a3b3ae; --line:#2a3833;
+  --brand:#4fd1b0; --brand-2:#7ee0c6; --ok:#7fdc9c; --ok-bg:#163223; --err:#ff9b9b; --err-bg:#3a1c1c; --pilih:#3a2f17; --pilih-garis:#f0b46b; } }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body { font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: 16px; }
+main { max-width: 860px; margin: 0 auto; }
+.kartu { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 6px 22px rgba(0,0,0,.06); }
+h1 { font-size: 1.5rem; margin: 0 0 8px; line-height: 1.25; }
+h2 { font-size: 1.2rem; margin: 0 0 14px; line-height: 1.4; }
+.muted { color: var(--muted); }
+.kecil { font-size: .9rem; }
+.atas { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 12px; font-size: .9rem; color: var(--muted); margin-bottom: 6px; }
+.bar { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; margin: 0 0 16px; }
+.bar > span { display: block; height: 100%; width: 0; background: var(--brand-2); transition: width .3s ease; }
+button { font: inherit; cursor: pointer; color: inherit; }
+button:disabled { cursor: default; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.tombol { border: 0; border-radius: 12px; padding: 12px 20px; font-weight: 700; background: var(--brand); color: #fff; min-height: 48px; }
+@media (prefers-color-scheme: dark) { .tombol { color: #0e1513; } }
+.tombol.sekunder { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
+.tombol:disabled { opacity: .5; }
+.aksi { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.chip { border: 2px solid var(--line); background: var(--card); border-radius: 12px; padding: 10px 14px; min-height: 46px; font-weight: 600; }
+.chip:hover:not(:disabled) { border-color: var(--brand-2); }
+.chip.dipilih { background: var(--pilih); border-color: var(--pilih-garis); }
+.benar { border-color: var(--ok) !important; background: var(--ok-bg) !important; }
+.salah { border-color: var(--err) !important; background: var(--err-bg) !important; }
+.umpan { margin: 16px 0 0; padding: 12px 14px; border-radius: 12px; }
+.umpan.benar { color: var(--ok); }
+.umpan.salah { color: var(--err); }
+.umpan p { margin: 4px 0 0; color: var(--ink); }
+.skor { font-size: 2.6rem; font-weight: 800; margin: 6px 0; color: var(--brand); }
+.ulas { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
+.ulas li { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.ulas .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.kaki { text-align: center; margin: 18px 0 0; font-size: .8rem; color: var(--muted); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+.pid-pratinjau { position: fixed; right: 12px; bottom: 12px; width: 176px; border-radius: 12px; overflow: hidden; border: 3px solid var(--brand-2); background: #000; z-index: 5; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.pid-pratinjau video { display: block; width: 100%; transform: scaleX(-1); }
+.pid-pratinjau .label { position: absolute; left: 6px; top: 6px; background: rgba(0,0,0,.6); color: #fff; font-size: .72rem; padding: 2px 8px; border-radius: 99px; }
+.pid-pratinjau.kecil video { display: none; }
+.pid-pratinjau button { position: absolute; right: 6px; top: 4px; min-height: 0; padding: 2px 8px; font-size: .72rem; border: 0; border-radius: 99px; background: rgba(255,255,255,.85); color: #15201c; }
+.pid-cek { border: 1px dashed var(--line); border-radius: 12px; padding: 10px 12px; margin: 12px 0 0; }
+main { max-width: none; }
+.tali { position: relative; height: 84px; margin: 4px 0 14px; }
+.tali .garis { position: absolute; left: 0; right: 0; top: 40px; height: 6px; background: #a16207; border-radius: 3px; }
+.tali .tengah { position: absolute; left: 50%; top: 18px; width: 4px; height: 50px; background: var(--muted); }
+.tali .simpul { position: absolute; top: 24px; width: 38px; height: 38px; margin-left: -19px; border-radius: 50%; background: #dc2626; border: 4px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,.3); transition: left .4s ease; }
+.tali .batas { position: absolute; top: 14px; width: 4px; height: 58px; background: var(--ok); }
+.arena-dua { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sisi { border: 4px solid var(--z); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 10px; touch-action: none; }
+.sisi h3 { margin: 0; color: var(--z); font-size: 1.3rem; }
+.sisi .tanya { font-size: 1.25rem; font-weight: 700; margin: 0; }
+.sisi .opsi { display: grid; gap: 8px; } .sisi .opsi .chip { min-height: 64px; font-size: 1.2rem; text-align: left; }
+.sisi.jeda { opacity: .5; }
+.kiri { --z: #1d4ed8; } .kanan { --z: #c2410c; }
+@media (max-width: 700px) { .arena-dua { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+            <section class="kartu" id="layar-mulai" aria-labelledby="judul">
+            <h1 id="judul"></h1>
+            <p class="muted" id="petunjuk"></p>
+            <p class="kecil muted" id="ringkas"></p>
+                <div class="pid-cek" id="pid-cek">
+        <p class="kecil muted" id="pid-status"> Kamera  belum diaktifkan. Permainan tetap bisa dimainkan dengan sentuhan.</p>
+        <div class="aksi" style="margin-top:8px">
+                                </div>
+        <p class="kecil muted">Gambar dan suara hanya diproses di perangkat ini, tidak direkam dan tidak dikirim ke mana pun.</p>
+    </div>
+            <div class="aksi"><button class="tombol" id="mulai" type="button">Mulai</button></div>
+        </section>
+    
+    <section class="kartu" id="layar-main"  hidden  aria-labelledby="judul-main">
+                    <h2 class="sr" id="judul-main">Tarik Tambang</h2>
+                    <div class="tali" aria-hidden="true"><span class="garis"></span><span class="tengah" style="left:50%"></span>
+        <span class="batas" id="batas-kiri"></span><span class="batas" id="batas-kanan"></span><span class="simpul" id="simpul"></span></div>
+    <p class="kecil muted" id="posisi" style="text-align:center;margin:0 0 10px"></p>
+    <div class="arena-dua">
+        <section class="sisi kiri" id="sisi-0" aria-label="Tim Kiri"><h3>Tim Kiri</h3><p class="tanya"></p><div class="opsi"></div></section>
+        <section class="sisi kanan" id="sisi-1" aria-label="Tim Kanan"><h3>Tim Kanan</h3><p class="tanya"></p><div class="opsi"></div></section>
+    </div>
+    </section>
+
+    <section class="kartu" id="layar-hasil" hidden aria-labelledby="judul-hasil">
+        <h2 id="judul-hasil" tabindex="-1">Hasil</h2>
+        <p class="skor" id="skor"></p>
+        <p id="pesan"></p>
+        <div id="wadah-ulas" hidden>
+            <h2 id="judul-ulas">Perlu dipelajari lagi</h2>
+            <ul class="ulas" id="ulas"></ul>
+        </div>
+                <div class="aksi"><button class="tombol" id="ulangi" type="button">Main lagi</button></div>
+    </section>
+
+    <p class="sr" id="pengumuman" role="status" aria-live="polite"></p>
+    <p class="kaki">Tarik Tambang · dibuat dengan Inovasi Guru</p>
+</main>
+
+<script type="application/json" id="ig-aktivitas">{"template":"tarik-tambang","schema":1,"judul":"Salinan – Adu Cepat Gerak Lurus: Duel GLB vs GLBB!","petunjuk":"Jawab dengan benar untuk menarik tali ke arah timmu.","pengaturan":{"langkah":5},"soal":[{"pertanyaan":"Apa yang terjadi pada arus jika tegangan naik, hambatan tetap?","benar":["Arus listrik bertambah"],"salah":["Arus listrik berkurang","Arus listrik tetap","Hambatan menjadi nol"]},{"pertanyaan":"Bagaimana arus pada setiap hambatan dalam rangkaian seri?","benar":["Sama besar"],"salah":["Selalu berbeda","Selalu menjadi nol","Terbesar di hambatan awal"]},{"pertanyaan":"Apa yang terjadi jika satu lampu paralel terputus?","benar":["Lampu lain tetap menyala"],"salah":["Semua lampu padam","Arus total menjadi nol","Tegangan sumber menjadi nol"]},{"pertanyaan":"Lampu berdaya besar menyala pada tegangan sama. Apa artinya?","benar":["Energi per sekon lebih besar"],"salah":["Hambatan pasti lebih besar","Arus pasti lebih kecil","Energi listrik menjadi nol"]},{"pertanyaan":"Hambatan 6 Ω diberi tegangan 12 V. Berapa arusnya? Jawaban benar","benar":["2 A"],"salah":["0,5 A","6 A","72 A"]}]}</script>
+<script>
+var IG = (function () {
+  'use strict';
+  var data = JSON.parse(document.getElementById('ig-aktivitas').textContent);
+  var $ = function (id) { return document.getElementById(id); };
+  var gerakMinimal = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function el(tag, kelas, teks) {
+    var e = document.createElement(tag);
+    if (kelas) { e.className = kelas; }
+    if (teks !== undefined && teks !== null) { e.textContent = teks; }
+    return e;
+  }
+  function tombol(kelas, teks, aksi) {
+    var b = el('button', kelas, teks); b.type = 'button';
+    if (aksi) { b.addEventListener('click', aksi); }
+    return b;
+  }
+  function acak(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function tampil(id) {
+    ['layar-mulai', 'layar-main', 'layar-hasil'].forEach(function (s) { if ($(s)) { $(s).hidden = s !== id; } });
+  }
+  function umumkan(teks) { var p = $('pengumuman'); p.textContent = ''; setTimeout(function () { p.textContent = teks; }, 30); }
+  function normal(s) {
+    return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, ' ').trim();
+  }
+  function pesan(persen) {
+    return persen === 100 ? 'Sempurna, semua benar!' : persen >= 75 ? 'Bagus sekali, tinggal sedikit lagi.'
+      : persen >= 50 ? 'Cukup baik. Pelajari lagi bagian yang belum tepat.' : 'Ayo pelajari lagi materinya, lalu coba ulangi.';
+  }
+  /** Layar hasil: o = {benar, total, skorTeks?, pesanTeks?, ulas: [{judul, isi[]}]} */
+  function hasil(o) {
+    var persen = o.total ? Math.round(o.benar / o.total * 100) : 0;
+    $('skor').textContent = o.skorTeks || (o.benar + ' / ' + o.total);
+    $('pesan').textContent = o.pesanTeks || ('Nilai ' + persen + '. ' + pesan(persen));
+    var ul = $('ulas'); ul.textContent = '';
+    (o.ulas || []).forEach(function (u) {
+      var li = el('li');
+      li.appendChild(el('div', null, u.judul));
+      (u.isi || []).forEach(function (baris) {
+        if (baris.label) { li.appendChild(el('div', 'label', baris.label)); }
+        li.appendChild(el('div', baris.kelas || null, baris.teks));
+      });
+      ul.appendChild(li);
+    });
+    $('wadah-ulas').hidden = !(o.ulas && o.ulas.length);
+    if (window.IGRekap) { window.IGRekap.tampil(o); }
+    tampil('layar-hasil');
+    $('judul-hasil').focus();
+  }
+  /** Penghitung waktu mundur: detik, setiap(sisa), habis(). Mengembalikan {henti()}. */
+  function hitungMundur(detik, setiap, habis) {
+    var sisa = detik, t = setInterval(function () {
+      sisa--; setiap(sisa);
+      if (sisa <= 0) { clearInterval(t); habis(); }
+    }, 1000);
+    setiap(sisa);
+    return { henti: function () { clearInterval(t); }, sisa: function () { return sisa; } };
+  }
+  function siapkan(mulaiFn) {
+    $('judul').textContent = data.judul;
+    $('petunjuk').textContent = data.petunjuk || '';
+    $('petunjuk').hidden = !data.petunjuk;
+    if ($('mulai')) { $('mulai').addEventListener('click', mulaiFn); }
+    $('ulangi').addEventListener('click', mulaiFn);
+  }
+  return { data: data, atur: data.pengaturan || {}, $: $, el: el, tombol: tombol, acak: acak, tampil: tampil,
+    umumkan: umumkan, normal: normal, hasil: hasil, hitungMundur: hitungMundur, siapkan: siapkan, gerakMinimal: gerakMinimal };
+})();
+</script>
+<script>
+/**
+ * PID: { kamera(lebar, tinggi, cb), mik(cb), henti(), aktif(), gerak(img, kolom), warna(img, kepekaan), alasan() }.
+ * cb kamera menerima ImageData bercermin (kiri layar = kiri siswa) ±10 kali per detik.
+ * suntik(img) meneruskan bingkai buatan ke cb (dipakai uji otomatis; tidak berpengaruh saat kamera nyata).
+ */
+var PID = (function () {
+  var aliran = null, video = null, kanvas = null, ctx = null, jalan = false, cbKamera = null, cbMik = null, sebelum = null, audio = null;
+  function alasan() {
+    if (!window.isSecureContext) { return 'Halaman ini tidak dibuka lewat https (misalnya file hasil unduhan), sehingga browser tidak mengizinkan kamera atau mikrofon. Buka karya lewat tombol "Coba layar penuh" di Inovasi Guru, atau mainkan dengan sentuhan.'; }
+    if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) { return 'Browser ini tidak mendukung akses kamera atau mikrofon. Mainkan dengan sentuhan.'; }
+    return '';
+  }
+  function status(teks) { var s = document.getElementById('pid-status'); if (s) { s.textContent = teks; } }
+  function pratinjau() {
+    var w = document.createElement('div'); w.className = 'pid-pratinjau'; w.id = 'pid-pratinjau';
+    var lb = IG.el('span', 'label', '● Kamera aktif'); var t = IG.tombol('', 'Sembunyikan', function () { w.classList.toggle('kecil'); t.textContent = w.classList.contains('kecil') ? 'Tampilkan' : 'Sembunyikan'; });
+    w.appendChild(video); w.appendChild(lb); w.appendChild(t); document.body.appendChild(w);
+  }
+  function putar() {
+    if (!jalan) { return; }
+    if (video && video.readyState >= 2 && cbKamera) {
+      ctx.save(); ctx.scale(-1, 1); ctx.drawImage(video, -kanvas.width, 0, kanvas.width, kanvas.height); ctx.restore();
+      cbKamera(ctx.getImageData(0, 0, kanvas.width, kanvas.height));
+    }
+    setTimeout(putar, 100);
+  }
+  function kamera(lebar, tinggi) {
+    var a = alasan(); if (a) { status(a); return Promise.reject(new Error(a)); }
+    status('Meminta izin kamera…');
+    return navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } }, audio: false }).then(function (s) {
+      aliran = s; video = document.createElement('video'); video.muted = true; video.setAttribute('playsinline', ''); video.srcObject = s; video.play();
+      kanvas = document.createElement('canvas'); kanvas.width = lebar; kanvas.height = tinggi; ctx = kanvas.getContext('2d', { willReadFrequently: true });
+      pratinjau(); jalan = true; putar(); status('Kamera aktif. Pastikan seluruh kelas terlihat di pratinjau kanan bawah.');
+    }, function (e) { status('Kamera tidak dapat dipakai (' + (e && e.name === 'NotAllowedError' ? 'izin ditolak' : (e && e.name) || 'galat') + '). Mainkan dengan sentuhan.'); throw e; });
+  }
+  function mik() {
+    var a = alasan(); if (a) { status(a); return Promise.reject(new Error(a)); }
+    status('Meminta izin mikrofon…');
+    return navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false }, video: false }).then(function (s) {
+      aliran = s; var AC = window.AudioContext || window.webkitAudioContext; audio = new AC();
+      var an = audio.createAnalyser(); an.fftSize = 1024; audio.createMediaStreamSource(s).connect(an);
+      var buf = new Float32Array(an.fftSize); jalan = true;
+      (function ukur() {
+        if (!jalan) { return; }
+        an.getFloatTimeDomainData(buf); var jum = 0; for (var i = 0; i < buf.length; i++) { jum += buf[i] * buf[i]; }
+        var db = 20 * Math.log10(Math.sqrt(jum / buf.length) + 1e-8); // -80 (sunyi) .. 0 (maks)
+        if (cbMik) { cbMik(Math.max(0, Math.min(100, Math.round((db + 70) * 100 / 60)))); }
+        setTimeout(ukur, 100);
+      })();
+      status('Mikrofon aktif.');
+    }, function (e) { status('Mikrofon tidak dapat dipakai (' + (e && e.name === 'NotAllowedError' ? 'izin ditolak' : (e && e.name) || 'galat') + ').'); throw e; });
+  }
+  function henti() {
+    jalan = false; sebelum = null;
+    if (aliran) { aliran.getTracks().forEach(function (t) { t.stop(); }); aliran = null; }
+    if (audio) { audio.close(); audio = null; }
+    var p = document.getElementById('pid-pratinjau'); if (p) { p.remove(); }
+  }
+  /** Energi gerak (0..1) per kolom dari selisih dua bingkai abu-abu berturut-turut. */
+  function gerak(img, kolom) {
+    var w = img.width, h = img.height, d = img.data, abu = new Uint8Array(w * h), hasil = [], per = [];
+    for (var k = 0; k < kolom; k++) { hasil.push(0); per.push(0); }
+    for (var i = 0, p = 0; i < abu.length; i++, p += 4) {
+      abu[i] = (d[p] * 3 + d[p + 1] * 6 + d[p + 2]) / 10;
+      var kol = Math.min(kolom - 1, Math.floor((i % w) * kolom / w)); per[kol]++;
+      if (sebelum && sebelum.length === abu.length && Math.abs(abu[i] - sebelum[i]) > 28) { hasil[kol]++; }
+    }
+    var ada = !!sebelum; sebelum = abu;
+    return hasil.map(function (n, k) { return ada ? n / per[k] : 0; });
+  }
+  /** Jumlah kartu per warna [merah, biru, hijau, kuning]: wilayah tersambung yang cukup besar. */
+  function warna(img, kepekaan) {
+    var w = img.width, h = img.height, d = img.data, kelas = new Int8Array(w * h), jumlah = [0, 0, 0, 0];
+    for (var i = 0, p = 0; i < kelas.length; i++, p += 4) {
+      var r = d[p] / 255, g = d[p + 1] / 255, b = d[p + 2] / 255, mx = Math.max(r, g, b), mn = Math.min(r, g, b), c = mx - mn, hue = 0;
+      kelas[i] = -1;
+      if (mx < 0.3 || c / (mx || 1) < 0.45) { continue; }
+      if (mx === r) { hue = 60 * (((g - b) / c) % 6); } else if (mx === g) { hue = 60 * ((b - r) / c + 2); } else { hue = 60 * ((r - g) / c + 4); }
+      if (hue < 0) { hue += 360; }
+      kelas[i] = hue < 15 || hue >= 340 ? 0 : hue >= 190 && hue < 255 ? 1 : hue >= 85 && hue < 165 ? 2 : hue >= 42 && hue < 70 ? 3 : -1;
+    }
+    var min = Math.max(4, Math.round(w * h * [0.012, 0.006, 0.003][(kepekaan || 2) - 1])), lihat = new Uint8Array(w * h), tumpuk = [];
+    for (var s = 0; s < kelas.length; s++) {
+      if (kelas[s] < 0 || lihat[s]) { continue; }
+      var kls = kelas[s], luas = 0; tumpuk.push(s); lihat[s] = 1;
+      while (tumpuk.length) {
+        var q = tumpuk.pop(), x = q % w; luas++;
+        [q - w, q + w, x > 0 ? q - 1 : -1, x < w - 1 ? q + 1 : -1].forEach(function (n) { if (n >= 0 && n < kelas.length && !lihat[n] && kelas[n] === kls) { lihat[n] = 1; tumpuk.push(n); } });
+      }
+      if (luas >= min) { jumlah[kls]++; }
+    }
+    return jumlah;
+  }
+  return { kamera: kamera, mik: mik, henti: henti, alasan: alasan, gerak: gerak, warna: warna, status: status,
+    aktif: function () { return jalan; }, atur: function (k, m) { cbKamera = k || null; cbMik = m || null; },
+    suntik: function (img) { if (cbKamera) { cbKamera(img); } }, suntikMik: function (n) { if (cbMik) { cbMik(n); } },
+    ujiAktif: function () { jalan = true; } };
+})();
+/** Ketukan multi-sentuh: pointerdown langsung (banyak jari bersamaan), click hanya untuk keyboard. */
+function ketuk(el, fn) {
+  el.addEventListener('pointerdown', function (e) { if (e.button > 0) { return; } e.preventDefault(); fn(e); });
+  el.addEventListener('click', function (e) { if (!e.detail) { fn(e); } });
+}
+(function () {
+  var d = IG.data, a = IG.atur, $ = IG.$, N = a.langkah, posisi = 0, antre = [], soal = [null, null], jeda = [false, false], selesai = false, benar = [0, 0];
+  var NAMA = ['Tim Kiri', 'Tim Kanan'];
+  $('ringkas').textContent = 'Dua tim beradu. Setiap jawaban benar menarik tali satu langkah; ' + N + ' langkah untuk menang. Jawaban salah membuat tim menunggu 2 detik.';
+  function ambil() { if (!antre.length) { antre = IG.acak(d.soal); } return antre.pop(); }
+  function tali() {
+    var persen = 50 + posisi / N * 42;
+    $('simpul').style.left = persen + '%'; $('batas-kiri').style.left = '8%'; $('batas-kanan').style.left = '92%';
+    $('posisi').textContent = posisi === 0 ? 'Seimbang' : (posisi < 0 ? NAMA[0] : NAMA[1]) + ' unggul ' + Math.abs(posisi) + ' langkah';
+  }
+  function isi(t) {
+    var s = soal[t] = ambil(), sisi = $('sisi-' + t), o = sisi.querySelector('.opsi');
+    sisi.querySelector('.tanya').textContent = s.pertanyaan; o.textContent = '';
+    IG.acak(s.benar.concat(s.salah)).forEach(function (teks) { var b = IG.tombol('chip', teks); b.setAttribute('data-teks', teks); ketuk(b, function () { jawab(t, teks, b); }); o.appendChild(b); });
+  }
+  function mulai() { posisi = 0; antre = []; selesai = false; jeda = [false, false]; benar = [0, 0]; IG.tampil('layar-main'); tali(); isi(0); isi(1); }
+  function jawab(t, teks, b) {
+    if (selesai || jeda[t]) { return; }
+    if (teks === soal[t].benar[0]) {
+      benar[t]++; posisi += t === 0 ? -1 : 1; tali(); IG.umumkan(NAMA[t] + ' menarik! ' + $('posisi').textContent);
+      if (Math.abs(posisi) >= N) { selesai = true; IG.hasil({ benar: benar[t], total: benar[0] + benar[1], skorTeks: NAMA[t] + ' menang!', pesanTeks: 'Jawaban benar: ' + NAMA[0] + ' ' + benar[0] + ', ' + NAMA[1] + ' ' + benar[1] + '.', ulas: [] }); return; }
+      isi(t); return;
+    }
+    b.classList.add('salah'); jeda[t] = true; $('sisi-' + t).classList.add('jeda'); IG.umumkan(NAMA[t] + ' salah, tunggu 2 detik.');
+    setTimeout(function () { jeda[t] = false; $('sisi-' + t).classList.remove('jeda'); if (!selesai) { isi(t); } }, 2000);
+  }
+  IG.siapkan(mulai);
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"7986eeca1d144948b85e0b10c3a463e7","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
